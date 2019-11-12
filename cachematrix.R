@@ -3,35 +3,34 @@
 
 ## Write a short comment describing this function
 
+#take the matrix as an input
 makeCacheMatrix <- function(x = matrix()) {
-  makeCacheMatrix <- function(x = matrix()) {
-    inv <- NULL
-    set <- function(y) {
-      x <<- y
-      inv <<- NULL
-    }
-    get <- function() x
-    setInverse <- function(inverse) inv <<- inverse
-    getInverse <- function() inv
-    list(set = set,
-         get = get,
-         setInverse = setInverse,
-         getInverse = getInverse)
+  j <- NULL
+ #set the value of the Matrix
+  set <- function(y){   
+  x <<- y
+  j <<- NULL
   }
+  get <- function()x  #get the value of the Matrix
+  setInverse <- function(inverse) j <<- inverse  #set the value of the invertible matrix j
+  getInverse <- function() j   #get the value of the invertible matrix j
+  list(set = set, get = get, 
+  setInverse = setInverse, 
+  getInverse = getInverse)
 }
 
 
 ## Write a short comment describing this function
-
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-  inv <- x$getInverse()
-  if (!is.null(inv)) {
-    message("getting cached data")
-    return(inv)
+#get the value of the invertible matrix from the makeCacheMatrix function
+  j <- x$getInverse()
+  if(!is.null(j)){ #if inverse matrix is not NULL
+  message("getting cached data")#Type message: Getting Cached Invertible Matrix 
+  return(j) #return the invertible matrix
   }
-  mat <- x$get()
-  inv <- solve(mat, ...)
-  x$setInverse(inv)
-  inv
+  #if value of the invertible matrix is NULL then 
+  mat <- x$get()  #get the original Matrix Data
+  j <- solve(mat,...) #use solve function to inverse the matrix
+  x$setInverse(j) #set the invertible matrix j
+  j #return the invertible matrix j
 }
