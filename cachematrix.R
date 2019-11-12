@@ -35,7 +35,7 @@ cacheSolve <- function(x, ...) {
   j <- x$getInverse()
   if(!is.null(j)){ #if inverse matrix is not NULL
   message("Getting Cached Invertible Matrix")#Type message: Getting Cached Invertible Matrix 
-  return(j) #return the invertible matrix
+  return(j) #return the invertible matrix j
   }
   #if value of the invertible matrix is NULL then 
   mat <- x$get()  #get the original Matrix Data
